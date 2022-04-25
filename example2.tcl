@@ -1,11 +1,7 @@
 set ns [new Simulator]
-
 set nf [open out.nam w]
-
 $ns namtrace-all $nf
-
 set f [open out.tr w]
-
 $ns trace-all $f
 
 proc finish {} {
@@ -40,19 +36,15 @@ $cbr0 attach-agent $udp0
 
 set tcp1 [new Agent/TCP]
 $ns attach-agent $n(1) $tcp1
-
 set ftp [new Application/FTP]
 $ftp attach-agent $tcp1
-
 set null0 [new Agent/Null]
 $ns attach-agent $n(3) $null0
-
 set sink1 [new Agent/TCPSink]
 $ns attach-agent $n(3) $sink1
 
 $ns connect $udp0 $null0
 $ns connect $tcp1 $sink1
-
 
 $ns color 1 Blue
 $ns color 2 Red
